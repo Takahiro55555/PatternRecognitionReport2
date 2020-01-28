@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "report02"
+version = "0.1.0"
+description = "パターン認識レポート課題のプログラム"
+authors = ["Takahiro.U"]
+
+[tool.poetry.dependencies]
+python = "3.7"
+scipy = "^1.4.1"
+matplotlib = "^3.1.2"
+
+[tool.poetry.dev-dependencies]
+numpy = "^1.18.1"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
