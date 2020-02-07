@@ -67,7 +67,9 @@ def main():
     y0 = norm.pdf(xx, mu[0], np.sqrt(sigma2[0]))
     y1 = norm.pdf(xx, mu[1], np.sqrt(sigma2[1]))
     y2 = norm.pdf(xx, mu[2], np.sqrt(sigma2[2]))
-    y = w[0] * y0 + w[1] * y1 + w[2] * y2
+    y3 = norm.pdf(xx, mu[3], np.sqrt(sigma2[3]))
+    y4 = norm.pdf(xx, mu[4], np.sqrt(sigma2[4]))
+    y = w[0] * y0 + w[1] * y1 + w[2] * y2 + w[3] * y3 + w[4] * y4
 
     fig, axs = plt.subplots(2, 2)
 
