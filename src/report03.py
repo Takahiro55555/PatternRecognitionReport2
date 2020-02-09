@@ -63,7 +63,7 @@ def main():
         t = t + 1
         tt = np.append(tt, t)
 
-    xx = np.arange(0, 5, 0.01)  # 0から5まで、0.01間隔．
+    xx = np.arange(0, 8, 0.01)  # 0から5まで、0.01間隔．
     y0 = norm.pdf(xx, mu[0], np.sqrt(sigma2[0]))
     y1 = norm.pdf(xx, mu[1], np.sqrt(sigma2[1]))
     y2 = norm.pdf(xx, mu[2], np.sqrt(sigma2[2]))
@@ -99,7 +99,7 @@ def main():
     axs[1, 1].plot(sigma2t[2])
     # axs[0].set_xlim(0, 2)
     axs[1, 1].set_xlabel('time')
-    axs[1, 1].set_ylabel(r'$\sigma_0$, 1, and 2')
+    axs[1, 1].set_ylabel(r'$\sigma_0$, $\sigma_1$, and $\sigma_2$')
     axs[1, 1].grid(True)
 
     # plt.plot(Lt)
