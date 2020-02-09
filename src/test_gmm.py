@@ -1,3 +1,5 @@
+import sys
+
 import numpy as np
 from scipy.stats import norm
 import matplotlib.pyplot as plt
@@ -33,4 +35,5 @@ if __name__ == "__main__":
     y = w[0] * y0 + w[1] * y1 + w[2] * y2
     plt.plot(xx, y, color='r')
     plt.hist(x, bins='auto', density=True)
-    plt.show()
+    if is_existed_option("--show"):
+    if is_existed_option("--show"): plt.show()

@@ -1,3 +1,5 @@
+import sys
+
 import numpy as np
 from scipy.stats import norm
 import matplotlib.pyplot as plt
@@ -19,6 +21,24 @@ def myrand(n, fill=0.0):  # n は生成するデータの個数
     flag = (3 / 4 <= u) & (u <= 1)
     x += (5 - np.sqrt(4 - 4 * u)) * flag
     return x
+
+
+def is_existed_option(option):
+    """
+    当該オプションがコマンドライン引数として指定してあるかどうかを確認する
+
+    Parameters
+    ----------
+    option : str
+        確認したいオプション
+
+    Returns
+    -------
+    bool
+        True: 当該オプションが存在する場合は
+        False: 当該オプションが存在しない場合
+    """
+    return option in sys.argv
 
 
 def main():
@@ -89,37 +109,45 @@ def main():
     # plt.hist(x, bins='auto', density=True)
     # plt.hist(x, bins=50, density=True)
 
-    axs[0, 0].plot(xx, y, color='r')
+    axs[0, 0].plot(xx, y, color='r', label=r'q(x; $\theta$ )')
     axs[0, 0].hist(x, bins='auto', density=True)
+    axs[0, 0].legend()
 
-    axs[0, 1].plot(wt[0])
-    axs[0, 1].plot(wt[1])
-    axs[0, 1].plot(wt[2])
+    axs[0, 1].plot(wt[0], label=r'$w_0$')
+    axs[0, 1].plot(wt[1], label=r'$w_1$')
+    axs[0, 1].plot(wt[2], label=r'$w_2$')
     # axs[0].set_xlim(0, 2)
     axs[0, 1].set_xlabel('time')
     axs[0, 1].set_ylabel(r'$w_0$, $w_1$, and $w_2$')
     axs[0, 1].grid(True)
+    axs[0, 1].legend(bbox_to_anchor=(1.05, 1),
+                     loc='upper left', borderaxespad=0, fontsize=7)
 
-    axs[1, 0].plot(mut[0])
-    axs[1, 0].plot(mut[1])
-    axs[1, 0].plot(mut[2])
+    axs[1, 0].plot(mut[0], label=r'$\mu_0$')
+    axs[1, 0].plot(mut[1], label=r'$\mu_1$')
+    axs[1, 0].plot(mut[2], label=r'$\mu_2$')
     # axs[0].set_xlim(0, 2)
     axs[1, 0].set_xlabel('time')
     axs[1, 0].set_ylabel(r'$\mu_0$, $\mu_1$, and $\mu_2$')
     axs[1, 0].grid(True)
+    axs[1, 0].legend(bbox_to_anchor=(1.05, 1),
+                     loc='upper left', borderaxespad=0, fontsize=7)
 
-    axs[1, 1].plot(sigma2t[0])
-    axs[1, 1].plot(sigma2t[1])
-    axs[1, 1].plot(sigma2t[2])
+    axs[1, 1].plot(sigma2t[0], label=r'$\sigma_0$')
+    axs[1, 1].plot(sigma2t[1], label=r'$\sigma_1$')
+    axs[1, 1].plot(sigma2t[2], label=r'$\sigma_2$')
     # axs[0].set_xlim(0, 2)
     axs[1, 1].set_xlabel('time')
     axs[1, 1].set_ylabel(r'$\sigma_0$, $\sigma_1$, and $\sigma_2$')
     axs[1, 1].grid(True)
+    axs[1, 1].legend(bbox_to_anchor=(1.05, 1),
+                     loc='upper left', borderaxespad=0, fontsize=7)
 
     fig.tight_layout()
     f_name = "%sp5_m3.png" % IMG_DIR
     plt.savefig(f_name)
-    plt.show()
+    if is_existed_option("--show"):
+        plt.show()
 
 
 if __name__ == "__main__":

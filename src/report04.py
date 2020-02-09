@@ -1,9 +1,29 @@
+import sys
+
 import numpy as np
 from scipy.stats import norm
 import matplotlib.pyplot as plt
 
 from myrand_gmm import myrand_gmm_m3
 from settings import IMG_DIR, SEED
+
+
+def is_existed_option(option):
+    """
+    当該オプションがコマンドライン引数として指定してあるかどうかを確認する
+
+    Parameters
+    ----------
+    option : str
+        確認したいオプション
+
+    Returns
+    -------
+    bool
+        True: 当該オプションが存在する場合は
+        False: 当該オプションが存在しない場合
+    """
+    return option in sys.argv
 
 
 def main():
@@ -77,44 +97,52 @@ def main():
     # plt.hist(x, bins='auto', density=True)
     # plt.hist(x, bins=50, density=True)
 
-    axs[0, 0].plot(xx, y, color='r')
+    axs[0, 0].plot(xx, y, color='r', label=r'q(x; $\theta$ )')
     axs[0, 0].hist(x, bins='auto', density=True)
+    axs[0, 0].legend()
 
-    axs[0, 1].plot(wt[0])
-    axs[0, 1].plot(wt[1])
-    axs[0, 1].plot(wt[2])
-    axs[0, 1].plot(wt[3])
-    axs[0, 1].plot(wt[4])
+    axs[0, 1].plot(wt[0], label=r'$w_0$')
+    axs[0, 1].plot(wt[1], label=r'$w_1$')
+    axs[0, 1].plot(wt[2], label=r'$w_2$')
+    axs[0, 1].plot(wt[3], label=r'$w_3$')
+    axs[0, 1].plot(wt[4], label=r'$w_4$')
     # axs[0].set_xlim(0, 2)
     axs[0, 1].set_xlabel('time')
     axs[0, 1].set_ylabel(r'$w_0$, $w_1$, $w_2$, $w_3$ and $w_4$')
     axs[0, 1].grid(True)
+    axs[0, 1].legend(bbox_to_anchor=(1.05, 1),
+                     loc='upper left', borderaxespad=0, fontsize=7)
 
-    axs[1, 0].plot(mut[0])
-    axs[1, 0].plot(mut[1])
-    axs[1, 0].plot(mut[2])
-    axs[1, 0].plot(mut[3])
-    axs[1, 0].plot(mut[4])
+    axs[1, 0].plot(mut[0], label=r'$\mu_0$')
+    axs[1, 0].plot(mut[1], label=r'$\mu_1$')
+    axs[1, 0].plot(mut[2], label=r'$\mu_2$')
+    axs[1, 0].plot(mut[3], label=r'$\mu_3$')
+    axs[1, 0].plot(mut[4], label=r'$\mu_4$')
     # axs[0].set_xlim(0, 2)
     axs[1, 0].set_xlabel('time')
     axs[1, 0].set_ylabel(r'$\mu_0$, $\mu_1$, $\mu_2$, $\mu_3$ and $\mu_4$')
     axs[1, 0].grid(True)
+    axs[1, 0].legend(bbox_to_anchor=(1.05, 1),
+                     loc='upper left', borderaxespad=0, fontsize=7)
 
-    axs[1, 1].plot(sigma2t[0])
-    axs[1, 1].plot(sigma2t[1])
-    axs[1, 1].plot(sigma2t[2])
-    axs[1, 1].plot(sigma2t[3])
-    axs[1, 1].plot(sigma2t[4])
+    axs[1, 1].plot(sigma2t[0], label=r'$\sigma_0$')
+    axs[1, 1].plot(sigma2t[1], label=r'$\sigma_1$')
+    axs[1, 1].plot(sigma2t[2], label=r'$\sigma_2$')
+    axs[1, 1].plot(sigma2t[3], label=r'$\sigma_3$')
+    axs[1, 1].plot(sigma2t[4], label=r'$\sigma_4$')
     # axs[0].set_xlim(0, 2)
     axs[1, 1].set_xlabel('time')
     axs[1, 1].set_ylabel(
         r'$\sigma_0$, $\sigma_1$, $\sigma_2$, $\sigma_3$ and $\sigma_4$')
     axs[1, 1].grid(True)
+    axs[1, 1].legend(bbox_to_anchor=(1.05, 1),
+                     loc='upper left', borderaxespad=0, fontsize=7)
 
     fig.tight_layout()
     f_name = "%sp4.png" % IMG_DIR
     plt.savefig(f_name)
-    plt.show()
+    if is_existed_option("--show"):
+        plt.show()
 
 
 if __name__ == "__main__":

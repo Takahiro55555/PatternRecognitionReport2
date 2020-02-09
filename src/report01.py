@@ -1,9 +1,29 @@
+import sys
+
 import numpy as np
 from scipy.stats import norm
 import matplotlib.pyplot as plt
 
 from settings import IMG_DIR
 from test_gmm import myrand_gmm
+
+
+def is_existed_option(option):
+    """
+    当該オプションがコマンドライン引数として指定してあるかどうかを確認する
+
+    Parameters
+    ----------
+    option : str
+        確認したいオプション
+
+    Returns
+    -------
+    bool
+        True: 当該オプションが存在する場合は
+        False: 当該オプションが存在しない場合
+    """
+    return option in sys.argv
 
 
 def main():
@@ -36,7 +56,8 @@ def main():
     plt.hist(x, bins='auto', density=True)
     plt.legend()
     plt.savefig(file_name)
-    plt.show()
+    if is_existed_option("--show"):
+        plt.show()
 
 
 if __name__ == "__main__":

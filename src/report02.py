@@ -1,9 +1,29 @@
+import sys
+
 import numpy as np
 from scipy.stats import norm
 import matplotlib.pyplot as plt
 
 from myrand_gmm import myrand_gmm_m3
 from settings import IMG_DIR, SEED
+
+
+def is_existed_option(option):
+    """
+    当該オプションがコマンドライン引数として指定してあるかどうかを確認する
+
+    Parameters
+    ----------
+    option : str
+        確認したいオプション
+
+    Returns
+    -------
+    bool
+        True: 当該オプションが存在する場合は
+        False: 当該オプションが存在しない場合
+    """
+    return option in sys.argv
 
 
 def main():
@@ -82,7 +102,8 @@ def main():
     axs[0, 1].set_xlabel('time')
     axs[0, 1].set_ylabel(r'$w_0$, $w_1$, and $w_2$')
     axs[0, 1].grid(True)
-    axs[0, 1].legend()
+    axs[0, 1].legend(bbox_to_anchor=(1.05, 1),
+                     loc='upper left', borderaxespad=0, fontsize=7)
 
     axs[1, 0].plot(mut[0], label=r'$\mu_0$')
     axs[1, 0].plot(mut[1], label=r'$\mu_1$')
@@ -91,7 +112,8 @@ def main():
     axs[1, 0].set_xlabel('time')
     axs[1, 0].set_ylabel(r'$\mu_0$, $\mu_1$, and $\mu_2$')
     axs[1, 0].grid(True)
-    axs[1, 0].legend()
+    axs[1, 0].legend(bbox_to_anchor=(1.05, 1),
+                     loc='upper left', borderaxespad=0, fontsize=7)
 
     axs[1, 1].plot(sigma2t[0], label=r'$\sigma_0$')
     axs[1, 1].plot(sigma2t[1], label=r'$\sigma_1$')
@@ -100,12 +122,14 @@ def main():
     axs[1, 1].set_xlabel('time')
     axs[1, 1].set_ylabel(r'$\sigma_0$, $\sigma_1$, and $\sigma_2$')
     axs[1, 1].grid(True)
-    axs[1, 1].legend()
+    axs[1, 1].legend(bbox_to_anchor=(1.05, 1),
+                     loc='upper left', borderaxespad=0, fontsize=7)
 
     fig.tight_layout()
     f_name = "%sp2.png" % IMG_DIR
     plt.savefig(f_name)
-    plt.show()
+    if is_existed_option("--show"):
+        plt.show()
 
 
 if __name__ == "__main__":
