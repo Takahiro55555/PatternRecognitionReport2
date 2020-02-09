@@ -71,43 +71,36 @@ def main():
 
     fig, axs = plt.subplots(2, 2)
 
-    # plt.plot(xx,y,color='r')
-    # plt.hist(x, bins='auto', density=True)
-    # plt.hist(x, bins=50, density=True)
-
-    axs[0, 0].plot(xx, y, color='r')
+    axs[0, 0].plot(xx, y, color='r', label=r'q(x; $\theta$ )')
     axs[0, 0].hist(x, bins='auto', density=True)
+    axs[0, 0].legend()
 
-    axs[0, 1].plot(wt[0])
-    axs[0, 1].plot(wt[1])
-    axs[0, 1].plot(wt[2])
+    axs[0, 1].plot(wt[0], label=r'$w_0$')
+    axs[0, 1].plot(wt[1], label=r'$w_1$')
+    axs[0, 1].plot(wt[2], label=r'$w_2$')
     # axs[0].set_xlim(0, 2)
     axs[0, 1].set_xlabel('time')
     axs[0, 1].set_ylabel(r'$w_0$, $w_1$, and $w_2$')
     axs[0, 1].grid(True)
+    axs[0, 1].legend()
 
-    axs[1, 0].plot(mut[0])
-    axs[1, 0].plot(mut[1])
-    axs[1, 0].plot(mut[2])
+    axs[1, 0].plot(mut[0], label=r'$\mu_0$')
+    axs[1, 0].plot(mut[1], label=r'$\mu_1$')
+    axs[1, 0].plot(mut[2], label=r'$\mu_2$')
     # axs[0].set_xlim(0, 2)
     axs[1, 0].set_xlabel('time')
     axs[1, 0].set_ylabel(r'$\mu_0$, $\mu_1$, and $\mu_2$')
     axs[1, 0].grid(True)
+    axs[1, 0].legend()
 
-    axs[1, 1].plot(sigma2t[0])
-    axs[1, 1].plot(sigma2t[1])
-    axs[1, 1].plot(sigma2t[2])
+    axs[1, 1].plot(sigma2t[0], label=r'$\sigma_0$')
+    axs[1, 1].plot(sigma2t[1], label=r'$\sigma_1$')
+    axs[1, 1].plot(sigma2t[2], label=r'$\sigma_2$')
     # axs[0].set_xlim(0, 2)
     axs[1, 1].set_xlabel('time')
     axs[1, 1].set_ylabel(r'$\sigma_0$, $\sigma_1$, and $\sigma_2$')
     axs[1, 1].grid(True)
-
-    # plt.plot(Lt)
-
-    # axs[3].set_xlabel('time')
-    # axs[3].set_ylabel('Likelihood')
-    # axs[3].grid(True)
-    # axs[3].plot(Lt)
+    axs[1, 1].legend()
 
     fig.tight_layout()
     f_name = "%sp2.png" % IMG_DIR
