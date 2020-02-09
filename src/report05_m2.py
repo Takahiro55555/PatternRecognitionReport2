@@ -120,6 +120,25 @@ def main():
     axs[0, 1].grid(True)
     axs[0, 1].legend(bbox_to_anchor=(1.05, 1),
                      loc='upper left', borderaxespad=0, fontsize=7)
+    axs[0,
+        1].annotate(int(wt[0][-1] * 1000) / 1000,
+                    xy=(len(wt[0]),
+                        wt[0][-1]),
+                    xytext=(+15,
+                            -10),
+                    textcoords="offset points",
+                    arrowprops=dict(arrowstyle="->",
+                                    connectionstyle="arc3,rad=-0.2"))
+    axs[0,
+        1].annotate(int(wt[1][-1] * 1000) / 1000,
+                    xy=(len(wt[1]),
+                        wt[1][-1]),
+                    xytext=(+15,
+                            -15),
+                    textcoords="offset points",
+                    arrowprops=dict(arrowstyle="->",
+                                    connectionstyle="arc3,rad=-0.2"))
+
 
     axs[1, 0].plot(mut[0], label=r'$\mu_0$')
     axs[1, 0].plot(mut[1], label=r'$\mu_1$')
@@ -129,6 +148,25 @@ def main():
     axs[1, 0].grid(True)
     axs[1, 0].legend(bbox_to_anchor=(1.05, 1),
                      loc='upper left', borderaxespad=0, fontsize=7)
+    axs[1,
+        0].annotate(int(mut[0][-1] * 1000) / 1000,
+                    xy=(len(mut[0]),
+                        mut[0][-1]),
+                    xytext=(+15,
+                            -10),
+                    textcoords="offset points",
+                    arrowprops=dict(arrowstyle="->",
+                                    connectionstyle="arc3,rad=-0.2"))
+    axs[1,
+        0].annotate(int(mut[1][-1] * 1000) / 1000,
+                    xy=(len(mut[1]),
+                        mut[1][-1]),
+                    xytext=(+15,
+                            -20),
+                    textcoords="offset points",
+                    arrowprops=dict(arrowstyle="->",
+                                    connectionstyle="arc3,rad=-0.2"))
+
 
     axs[1, 1].plot(sigma2t[0], label=r'$\sigma_0$')
     axs[1, 1].plot(sigma2t[1], label=r'$\sigma_1$')
@@ -138,6 +176,25 @@ def main():
     axs[1, 1].grid(True)
     axs[1, 1].legend(bbox_to_anchor=(1.05, 1),
                      loc='upper left', borderaxespad=0, fontsize=7)
+    axs[1,
+        1].annotate(int(sigma2t[0][-1] * 1000) / 1000,
+                    xy=(len(sigma2t[0]),
+                        sigma2t[0][-1]),
+                    xytext=(+15,
+                            -10),
+                    textcoords="offset points",
+                    arrowprops=dict(arrowstyle="->",
+                                    connectionstyle="arc3,rad=-0.2"))
+    axs[1,
+        1].annotate(int(sigma2t[1][-1] * 1000) / 1000,
+                    xy=(len(sigma2t[1]),
+                        sigma2t[1][-1]),
+                    xytext=(+15,
+                            -10),
+                    textcoords="offset points",
+                    arrowprops=dict(arrowstyle="->",
+                                    connectionstyle="arc3,rad=-0.2"))
+
 
     fig.tight_layout()
     f_name = "%sp5_m2.png" % IMG_DIR
