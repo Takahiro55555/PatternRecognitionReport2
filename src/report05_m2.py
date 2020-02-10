@@ -139,7 +139,6 @@ def main():
                     arrowprops=dict(arrowstyle="->",
                                     connectionstyle="arc3,rad=-0.2"))
 
-
     axs[1, 0].plot(mut[0], label=r'$\mu_0$')
     axs[1, 0].plot(mut[1], label=r'$\mu_1$')
     # axs[0].set_xlim(0, 2)
@@ -167,7 +166,6 @@ def main():
                     arrowprops=dict(arrowstyle="->",
                                     connectionstyle="arc3,rad=-0.2"))
 
-
     axs[1, 1].plot(sigma2t[0], label=r'$\sigma_0$')
     axs[1, 1].plot(sigma2t[1], label=r'$\sigma_1$')
     # axs[0].set_xlim(0, 2)
@@ -194,7 +192,6 @@ def main():
                     textcoords="offset points",
                     arrowprops=dict(arrowstyle="->",
                                     connectionstyle="arc3,rad=-0.2"))
-
 
     fig.tight_layout()
     f_name = "%sp5_m2.png" % IMG_DIR
