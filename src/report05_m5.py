@@ -105,6 +105,8 @@ def main():
     y4 = norm.pdf(xx, mu[4], np.sqrt(sigma2[4]))
     y = w[0] * y0 + w[1] * y1 + w[2] * y2 + w[3] * y3 + w[4] * y4
 
+    print("EM Time: %d(file: %s)" % (len(wt[0]), __file__))
+
     fig, axs = plt.subplots(2, 2)
 
     # plt.plot(xx,y,color='r')
