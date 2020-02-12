@@ -1,7 +1,7 @@
 #! /bin/zsh
 
 time_stamp=`date +"%Y%m%d-%H%M%S"`;
-file_name="result-${time_stamp}.zip"
+file_name="result-${time_stamp}.txt"
 
 #shasum report01.py > $file_name
 #poetry run python3 report01.py >> $file_name
